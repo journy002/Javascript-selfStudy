@@ -1,0 +1,21 @@
+{
+  "name": "Javascript-selfStudy",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/journy002/Javascript-selfStudy.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/journy002/Javascript-selfStudy/issues"
+  },
+  "homepage": "https://github.com/journy002/Javascript-selfStudy#readme"
+}
