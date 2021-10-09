@@ -59,4 +59,32 @@ const numbers = {
 };
 console.log(numbers.sum);
 numbers.b = 5;
-console.log(numbers.sum)
+console.log(numbers.sum);
+
+
+// 배열 알아보기
+const object = [
+    {
+        name: 'mung mung e'
+    },
+    {
+        name: 'ya ong e'
+    }
+];
+
+console.log(object)
+console.log(object[0]);
+console.log(object[1]);
+console.log(object.length)
+
+object.push({
+    name: 'mongmong i'
+});
+
+console.log(object.length);
+
+console.log('------반복문---------')
+// 반복문
+for( let i = 5; i > 0; i-- ) {
+    console.log(i)
+}
