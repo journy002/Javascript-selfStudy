@@ -84,7 +84,38 @@ object.push({
 console.log(object.length);
 
 console.log('------반복문---------')
+
 // 반복문
 for( let i = 5; i > 0; i-- ) {
     console.log(i)
 }
+
+const names = ['mungmung', 'yaong', 'mengmung'];
+
+for(let i = 0; i < names.length; i++) {
+    console.log(names[i])
+}
+
+console.log('-----------while------------')
+
+// while
+
+let i = 0;
+
+while (i < 10) {
+    console.log(i);
+    i++;
+}
+
+console.log('===========')
+
+
+const superheroes = ['아이언맨', '캡틴 아메리카', '토르', '닥터 스트레인지'];
+
+superheroes.forEach(hero => console.log(hero))
+
+const array = [1,2,3,4,5];
+
+const square = n => n * n;
+const squared = array.map(square);
+console.log(squared)

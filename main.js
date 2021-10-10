@@ -1,4 +1,4 @@
-import getType from './getType';console.log(getType(null));
+// import getType from './getType';console.log(getType(null));
 
 // type 을 확인하는 두가지 방법
 // 첫째 typeof
