@@ -66,3 +66,56 @@ console.log('---------------find -------------');
 const todoFind = todos.find(todo => todo.id === 3);
 console.log(todoFind, 'todoFind');
 
+
+console.log('--------------splice--------------');
+
+const numbers = [10,20,30,40];
+const index2 = numbers.indexOf(30);
+numbers.splice(index2, 1);
+console.log(numbers,'splice');
+
+console.log('------slice--------');
+
+const numberss = [10,20,30,40,];
+const sliced = numbers.slice(0, 2);
+
+console.log(sliced,'slice');
+console.log(numberss,'sliced numbers');
+
+console.log('------------shift, pop -----------');
+// 배열의 첫번째 항목,원소를 추출
+const numbers33 = [10,20,30,40];
+const value = numbers33.shift();
+console.log(numbers33, 'number33');
+console.log(value,'value');
+
+const number44 = [10,20,30,40,50,];
+// 배열의 맨 마지막 항목을 추출한다.
+const value2 = number44.pop();
+console.log(number44,'number44');
+console.log(value2,'value2');
+
+console.log('-------------join ----------');
+// 배열안에 값들을 문자열 형태로 합쳐준다.
+const arrayJoin = [1,2,3,4,5];
+console.log(arrayJoin.join(), 'join');
+console.log(arrayJoin.join(' '), 'join" "');
+console.log(arrayJoin.join(', '), 'join", "');
+
+console.log('------------concat-----------');
+const arr1 = [1,2,3];
+const arr2 = [5,6,7];
+const concated = arr1.concat(arr2);
+console.log(concated,'concated')
+
+
+console.log('------reduce ---------');
+
+const reduceNumber = [1,2,3,4,5];
+
+let reduceSum = reduceNumber.reduce((accumulated, current) => {
+    console.log({accumulated, current});
+    return accumulated + current
+},0);
+
+console.log(reduceSum);
