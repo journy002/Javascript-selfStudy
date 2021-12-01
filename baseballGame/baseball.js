@@ -46,10 +46,13 @@ while (count < 10) {
     }
   }
 
+
+  // 여기서 개선해야할 문제
+  // 1. 랜덤값을 다시 받아와야한다.
+  // 해결 : prompt의 cancel을 누르면 null값이 전달된다. null값을 받아올 경우 조건문을 통해 break;를 걸어주어 종료 시켜준다.
   if (input === null) {
-    strike = 0
-    ball = 0
-    count = 0
+    alert('Game is Done')
+    break;
   }
 
   if (strike === 4) {
@@ -57,6 +60,6 @@ while (count < 10) {
   } else if (count >= 10) {
     console.error('count over!!')
   } else {
-    console.info(strike + ': strike! ' + ball + ': ball ' + count + ': count')
+    console.info('strike: ' + strike + ' ball: ' + ball  + ' count : ' + count)
   }
 }
