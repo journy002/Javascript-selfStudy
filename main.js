@@ -18,7 +18,18 @@ console.log('------------------------')
 //     return Object.prototype.toString.call(data).slice(8, -1);
 // };
 
-console.log(getType('hello'));
-console.log(getType(null));
-console.log(getType({}));
-console.log(getType([]));
+// console.log(getType('hello'));
+// console.log(getType(null));
+// console.log(getType({}));
+// console.log(getType([]));
+
+
+
+function clickBtn() {
+    open('https://www.naver.com');
+}
+
+function goForward() {
+    window.history.forward();
+    console.log('goForward')
+}
