@@ -43,3 +43,5 @@ Child.prototype.constructor = Child
 let child = new Child;
 console.log(Parent.prototype.isPrototypeOf(child),'child parent')
 console.log(GrandParent.prototype.isPrototypeOf(child),'child grandparent')
+
+// Object 객체는 매우 많아 지속적인 공부가 필요해 보임..
