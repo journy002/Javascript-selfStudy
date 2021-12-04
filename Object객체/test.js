@@ -18,8 +18,28 @@ console.log(oms.__proto__.__proto__ , ' 생성자를 통해 만든 객체의 pro
 let obj = {
     example: 'yes'
 }
-
 console.log(obj.example, ' // obj example') // yes
 console.log(obj.hasOwnProperty('example')) // true
 console.log(obj.toString()) // [object Object]
 console.log(obj.hasOwnProperty('toString')) // false
+
+
+// 객체.isPrototypeOf(대상)
+// 객체가 대상의 조상인지 알려줍니다.
+
+let GrandParent = function() {}
+
+let Parent = function() {}
+Parent.prototype = new GrandParent()
+Parent.prototype.constructor = Parent
+
+let parent = new Parent()
+console.log(GrandParent.prototype.isPrototypeOf(parent),'parent grandparent')
+
+let Child = function() {}
+Child.prototype = new Parent();
+Child.prototype.constructor = Child
+
+let child = new Child;
+console.log(Parent.prototype.isPrototypeOf(child),'child parent')
+console.log(GrandParent.prototype.isPrototypeOf(child),'child grandparent')
