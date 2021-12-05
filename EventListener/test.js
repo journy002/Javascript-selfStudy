@@ -2,8 +2,9 @@
 
 // 자주 사용되는 이벤트 목록
 
-// onblur() : 객체가 focus를 잃었을때
-// onchange() : 객체의 내용이 바뀌고 focus를 잃었을때
+// onfocus() : 포커스를 받는 경우 이벤트 설정
+// onblur() : 포커스가 해지될 때 이벤트 설정
+// onchange() : 작성한 JS를 통해 변화가 일어났는지 감지
 // onkeydown() : 키를 눌렀을 때
 // onkeypress() : 키를 누르고 있을 때
 // onkeyup() : 키를 눌렀다 땠을 때
