@@ -13,7 +13,7 @@
 // onreset() : Reset 버튼을 눌렀을 때
 // onresize() : 객체의 크기가 바뀌었을 때
 // onscroll() : 스크롤바를 조작할 때
-// onsubmit() : 폼이 전송될 때
+// onsubmit() : 폼이 전송될 때`
 
 window.onload = function () {
   alert("I'm loaded")
@@ -27,4 +27,11 @@ let msg = document.getElementById('msg')
 let result = document.getElementById('result')
 msg.onfocus = function (e) {
   result.innerText = 'onfocus'
+}
+
+msg.onblur = function (e) {
+    if(msg.value.length < 6) {
+        alert('6자리 이상 입력해야 합니다.')
+    }
+    result.innerText = 'focus가 빠져나갑니다.'
 }
