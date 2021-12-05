@@ -16,5 +16,15 @@
 // onsubmit() : 폼이 전송될 때
 
 window.onload = function () {
-    alert('I\'m loaded')
+  alert("I'm loaded")
+}
+
+document.getElementById('clickMe').addEventListener('click', function () {
+  alert('I clicked!!')
+})
+
+let msg = document.getElementById('msg')
+let result = document.getElementById('result')
+msg.onfocus = function (e) {
+  result.innerText = 'onfocus'
 }
