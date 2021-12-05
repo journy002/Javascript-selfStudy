@@ -90,3 +90,5 @@ document.onclick = function(event) {
 // 예) <button onclick="showResult()">클릭</button>
 // HTML과 Javascript는 분리가 원칙입니다.
 // 그래야 나중에 유지보수가 쉬워집니다.
+
+
