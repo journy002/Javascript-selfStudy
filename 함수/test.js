@@ -102,3 +102,100 @@ if(checkAge(age)) {
 //     + or +
 //     whatever * f(a) + f(b)
 // )
+
+
+// Callback function 콜백함수
+// 매개변수가 3개 있는 함수 작성, ask(question, yes, no)
+// question: 질문 yes: yes라고 답한 경우 실행되는 함수 no: no라고 답한 경우 실행되는 함수
+// 함수는 반드시 question(질문)을 해야 하고, 사용자의 답변에 따라 yes() or no()를 호출합니다.
+
+function ask (question, yes, no) {
+    if(confirm(question)) yes()
+    else no()
+}
+
+function showOk() {
+    console.log(" 동의하셨습니다. ")
+}
+
+function showCancle() {
+    console.log(" 취소 버튼을 누르셨습니다. ")
+}
+
+// 사용법: 함수 showOk와 showCancle가 ask 함수의 인수로 전달됨
+ask("동의하십니까?", showOk, showCancle)
+
+
+// 함수 표현식 vs 함수 선언문
+
+// 함수 선언문
+function exm(a,b) {return a + b}
+
+// 함수 표현식
+let exm2 = function(a,b) {return a + b}
+
+// 참조에 의한 객체 복사
+// 객체와 원시 타입의 근본적인 차이 중 하나는 
+// 객체는 '참조에 의해' 저장되고 복사된다는 것 입니다.
+// 원시값(문자열, 숫자, 불린 값)은 '값 그대로' 저장, 할당되고 복사됩니다.
+
+// 객체의 동작 방식은 객체가 저장되어있는 '메모리 주소'인 객체에 대한 '참조 값'이 저장됩니다.
+// 객체는 메모리 내 어딘가에 저장되고, 변수 user엔 객체를 '참조'할 수 있는 값이 저장됩니다.
+let exUser = {
+    name: 'John'
+}
+
+let exAdmin = exUser
+exAdmin.name = 'Konan' // exAdmin 참조 값에 의해 변경 됨
+
+console.log(exUser, 'exUser') // { name: 'Konan' }  exAdmin 참조 값에 의해 변경 됨
+console.log(exAdmin, 'exAdmin') // { name: 'Konan' }
+
+// 객체 복사, 병합과 Object.assing()
+// Object.assign(target, ...sources)  =>  sources가 가지고 있는 속성들을 target에 반영한다.
+
+const target = { a: 1, b: 2 }
+const source = { b: 4, c: 5 }
+const returnedTarget = Object.assign(target, source)
+
+console.log(target, 'Object.assign target') // { a: 1, b: 4, c: 5 }
+console.log(returnedTarget, 'Object.assign returnedTarget') // { a: 1, b: 4, c: 5 }
+
+
+const bbbb = {
+    name: 'johoh',
+    age: 30,
+    bubu: true
+}
+
+let clone = {} // 새로운 빈 객체
+
+for(let key in bbbb) {
+    console.log(key,' keyeyeyey')
+
+    setTimeout(() => {
+        console.log(bbbb[key], 'bbbb value')
+    }, 2000)
+
+    clone[key] = bbbb[key] // 빈 객체에 bbbb 프로퍼티 전부를 복사해 넣었습니다.
+    // 이제 clone은 완전히 독립적인 복제본이 되었습니다.
+    clone.name = 'Petty' // clone의 데이터를 변경합니다.
+    setTimeout(() => {
+        console.log(clone[key], 'clone value')
+    },3000)
+
+    setTimeout(() => {
+        console.log(bbbb.name, 'clone.name을 변경 했지만 기존 객체는 여전히 johoh가 있습니다.')
+    },4000)
+}
+
+// 중첩 객체 복사
+let bodyUser = {
+    name: 'JOJOhn',
+    sizes: {
+        height: 180,
+        width: 76
+    }
+}
+
+console.log(bodyUser.sizes.height, 'bodyUser size height') // 180
