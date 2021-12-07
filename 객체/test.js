@@ -48,6 +48,7 @@ print(captainAmerica);
 
 console.log('-----------------------');
 
+// 객체 안에 함수 넣기
 const dog2 = {
     name: 'mungmung',
     sound: 'wuwuwua!',
@@ -57,6 +58,21 @@ const dog2 = {
 }
 
 dog2.say();
+
+// Getter Setter
+
+const numbers = {
+    a: 1,
+    b: 2,
+    // Getter 함수는 특정 값을 조회 할 때 우리가 설정한 함수로 연산된 값을 반환합니다.
+    get sum() {
+        console.log('sum 함수가 실행');
+        return this.a + this.b
+    }
+};
+console.log(numbers.sum);
+numbers.b = 5;
+console.log(numbers.sum);
 
 let user = {}
 

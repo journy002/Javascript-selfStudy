@@ -104,3 +104,15 @@ function showshow2(text) {
     console.log(text, '빈 문자열 나타내기 방법 2')
 }
 showshow2();
+
+// 방법 3) 모던 자바스크립트가 지원하는 null 병합 연산자 '??'를 사용하면 0처럼 falsy로 평가되는 값들을 일반 값처럼 처리할 수 있어 좋습니다.
+
+// 매개변수 'count'가 넘어오지 않으면 'unknown'을 출력해주는 함수
+function showshow3(count) {
+    console.log(count ?? 'unknown 방법3')
+}
+
+showshow3(0) // 0
+showshow3('string') // string
+showshow3(null) // unknown
+showshow3() // unknown
