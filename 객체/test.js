@@ -7,12 +7,12 @@
 // 중괄호 안에는 '키(key): 값(value)' 쌍으로 구성된 프로퍼티(property)를 여러 개 넣을 수 있는데, 키엔 문자형, 값엔 모든 자료형이 허용됩니다.
 
 const dog = {
-    name: 'dogdog',
-    age: 2
-};
+  name: 'dogdog',
+  age: 2,
+}
 // 프로퍼티 값 얻기
-console.log(dog.name);
-console.log(dog.age);
+console.log(dog.name)
+console.log(dog.age)
 
 // 상수 객체는 수정될 수 있습니다.
 // const는 dog의 값을 고정하지만, 그 내용은 고정하지 않습니다.
@@ -20,84 +20,82 @@ console.log(dog.age);
 dog.name = 'ddalsun'
 console.log(dog.name) // ddalsun
 
-console.log('------------------------');
-
+console.log('------------------------')
 
 const ironMan = {
-    name: 'tony',
-    actor: 'robert douny junior',
-    alias: 'ironMan'
-};
-
-const captainAmerica = {
-    name:'steve',
-    actor: 'chris',
-    alias: 'captain America'
-};
-
-console.log(ironMan);
-console.log(captainAmerica);
-
-function print (hero) {
-    const { name, actor, alias } = hero; //구조 분해 할당
-    console.log(`${name}(${actor})는는 ${alias}`)
+  name: 'tony',
+  actor: 'robert douny junior',
+  alias: 'ironMan',
 }
 
-print(ironMan);
-print(captainAmerica);
+const captainAmerica = {
+  name: 'steve',
+  actor: 'chris',
+  alias: 'captain America',
+}
 
-console.log('-----------------------');
+console.log(ironMan)
+console.log(captainAmerica)
+
+function print(hero) {
+  const { name, actor, alias } = hero //구조 분해 할당
+  console.log(`${name}(${actor})는는 ${alias}`)
+}
+
+print(ironMan)
+print(captainAmerica)
+
+console.log('-----------------------')
 
 // 객체 안에 함수 넣기
 const dog2 = {
-    name: 'mungmung',
-    sound: 'wuwuwua!',
-    say: function () {
-        console.log(this.sound);
-    }
+  name: 'mungmung',
+  sound: 'wuwuwua!',
+  say: function () {
+    console.log(this.sound)
+  },
 }
 
-dog2.say();
+dog2.say()
 
 // Getter Setter
 
 const numbers = {
-    a: 1,
-    b: 2,
-    // Getter 함수는 특정 값을 조회 할 때 우리가 설정한 함수로 연산된 값을 반환합니다.
-    get sum() {
-        console.log('sum 함수가 실행');
-        return this.a + this.b
-    }
-};
-console.log(numbers.sum);
-numbers.b = 5;
-console.log(numbers.sum);
+  a: 1,
+  b: 2,
+  // Getter 함수는 특정 값을 조회 할 때 우리가 설정한 함수로 연산된 값을 반환합니다.
+  get sum() {
+    console.log('sum 함수가 실행')
+    return this.a + this.b
+  },
+}
+console.log(numbers.sum)
+numbers.b = 5
+console.log(numbers.sum)
 
 let user = {}
 
 // set
-user["I like birds"] = true
+user['I like birds'] = true
 
 // get
-alert(user["I like birds"]); // true
+alert(user['I like birds']) // true
 
 // delete
-delete user["I like birds"]
+delete user['I like birds']
 
-console.log('-----------------------');
+console.log('-----------------------')
 
 // 대괄호 표기법
 // 키가 유효한 변수 식별자가 아닌 경우엔 점 표기법 대신에 '대괄호 표기법(square bracket notation)'이라 불리는 방법을 사용할 수 있습니다.
 // 대괄호 표기법은 키에 어떤 문자열이 있던지 상관없습니다.
 let atUser = {
-    name: 'Hoob',
-    age: 30
+  name: 'Hoob',
+  age: 30,
 }
 
-let key = prompt("사용자 정보", "name")
+let key = prompt('사용자 정보', 'name')
 alert(atUser[key]) // name 입력시 => 'Hoob' , age 입력시 => 30
-
 
 // 'in' 연산자로 프로퍼티 존재 여부 확인하기
 // 자바스크립트 객체는 다른 언어와 달리 존재하지 않는 프로퍼티에 접근하려 해도 에러가 발생하지 않고 undefined를 반환합니다.
@@ -108,5 +106,32 @@ let inUser = {}
 // 문법 => "key" in object
 
 let ckProper = { name: 'JOJOha', age: 24 }
-console.log("age" in ckProper, 'check property')
-console.log("bababa" in ckProper, 'check none property')
+console.log('age' in ckProper, 'check property')
+console.log('bababa' in ckProper, 'check none property')
+
+// 리터럴과 프로퍼티
+// 중괄호 {...} 안에는 '키:값' 쌍으로 구성된 프로퍼티가 들어갑니다.
+
+let user10 = {
+  // 객체
+  name: 'Hon', // 키: 'name', 값: 'Hon'
+  age: 30, // 키: 'age', 값: 30
+  isAdmin: true, // 프로퍼티 값엔 모든 자료형이 올 수 있습니다.
+  'likes birds': true, // 여러 단어를 조합해 프로퍼티 이름을 만들경우 따옴표로 묶어줘야 합니다.
+}
+
+// 프로퍼티 값 얻기
+console.log(user10.name, '// user10에서 얻어온 name 프로퍼티')
+console.log(user10.age, '// user10에서 얻어온 age 프로퍼티')
+
+// delete 연산자를 사용하면 프로퍼티를 삭제할 수 있습니다.
+// delte user10.age
+
+// 상수(const) 객체는 수정될 수 있습니다.
+
+const user11 = {
+  name: 'Peter',
+}
+
+user11.name = 'PPett'
+console.log(user11.name, 'user11에서 얻어온 name프로퍼티')
