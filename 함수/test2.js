@@ -117,13 +117,44 @@ showshow3() // unknown
 
 // 함수 선언문
 // 함수 선언문이 정의되기 전에도 호출할 수 있습니다.
-function welcome(a, b) {
+function sum(a, b) {
   // 실행시킬 내용
   return a + b
 }
 
+// sayHi('john')   // Hello, john
+// function sayHi(name) {
+//     console.log(`Hello ${name}`)
+// }
+
 // 함수 표현식
 // 함수 표현식은 코드의 실행 흐름이 해당 함수에 도달했을때 함수를 실행합니다.
-let sum = function (a, b) {
+let sum2 = function (a, b) {
   return a + b
 }
+
+// sayHi('john') // error
+// let sayHi = function(name) {
+//     console.log(`Hello ${name}`)
+// }
+
+let agee = prompt('나이를 입력해 주세요', 18)
+let welcome =
+  agee < 18
+    ? function () {
+        alert('hi!')
+      }
+    : function () {
+        alert('Hello!')
+      }
+welcome()
+
+// 함수 선언문과 함수 표현식 중 무엇을 선택해야 하나요?
+
+// 제 경험에 따르면 함수 선언문을 이용해 함수를 선언하는 걸 먼저 고려하는 게 좋습니다.
+
+//함수 선언문으로 함수를 정의하면, 함수가 선언되기 전에 호출할 수 있어서 코드 구성을 좀 더 자유롭게 할 수 있습니다.
+
+// 함수 선언문을 사용하면 가독성도 좋아집니다. 코드에서 let f = function(…) {…}보다 function f(…) {…} 을 찾는 게 더 쉽죠. 함수 선언 방식이 더 “눈길을 사로잡습니다”.
+
+// 그러나 어떤 이유로 함수 선언 방식이 적합하지 않거나, (위 예제와 같이) 조건에 따라 함수를 선언해야 한다면 함수 표현식을 사용해야 합니다.
