@@ -33,3 +33,28 @@ console.log(firstName ?? lastName ?? nickName ?? '익명의 사용자') // 익�
 
 // * ||는 첫 번째 truthy 값을 반환합니다.
 // * ??는 첫 번째 정의된(defined) 값을 반환합니다.
+
+// null, undefined, 숫자 0을 구분 지어 다뤄야 할 때 이 차이점은 매우 중요한 역할을 합니다.
+
+// 예)
+let hegith = 0
+
+console.log(height = height ?? 100) // 0
+console.log(height = height || 100) // 100
+
+// height || 100은 height에 0을 할당했지만 0을 falsy한 값으로 취급했기 때문에 null이나 undefined를 할당한 것과 동일하게 처리합니다.
+// 따라서 height || 100의 평가 결과는 100 입니다.
+// 반면 height ?? 100의 평가 결과는 height가 정확하게 null, undefined일 경우에만 100이 됩니다.
+// 예시에선 height에 0이라는 값을 할당했기 때문에 콘솔창엔 0이 출력됩니다.
+
+// 이런 특징 때문에 높이처럼 0이 할당될 수 있는 변수를 사용해 기능을 개발할땐 || 보단 ??가 적합합니다.
+
+// 연산자 우선순위
+// ??의 연산자 우선순위는 5로 꽤 낮습니다.
+
+// 안정성 관련 이슈 때문에 ??는 &&나 ||와 함께 사용하지 못합니다.
+// 예) let x = 1 && 2 ?? 3; // SyntaxError: Unexpected token '??'
+
+// 제약을 피하려면 괄호를 사용하면 됩니다.
+// let x = (1 && 2) ?? 3
+// console.log(x) // 2

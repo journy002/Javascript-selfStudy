@@ -22,19 +22,16 @@
 
 // showMessage()
 
-
-
 // 지역 변수
 // 함수 내에서 선언한 변수인 지역 변수(local variable)는 함수 안에서만 접근할 수 있습니다.
 
 // function showMessage() {
 //     let message = "안녕하세요!"; // 지역 변수
-  
+
 //     alert( message );
 //   }
 //   showMessage(); // 안녕하세요!
 //   alert( message ); // ReferenceError: message is not defined (message는 함수 내 지역 변수이기 때문에 에러가 발생합니다.)
-
 
 // 외부 변수, 전역변수
 // 함수 내부에서 함수 외부의 변수인 외부 변수(outer variable)에 접근할 수 있습니다.
@@ -49,9 +46,9 @@
 let userName = 'Johnsina'
 
 function showMessage() {
-    userName = 'BBob' // (1) 외부 변수를 수정함
-    let message = 'Hello, ' + userName
-    console.log(message, '함수 안에 message 출력')
+  userName = 'BBob' // (1) 외부 변수를 수정함
+  let message = 'Hello, ' + userName
+  console.log(message, '함수 안에 message 출력')
 }
 
 console.log(userName) // 함수 호출전 이므로 Johnsina가 호출됨
@@ -61,19 +58,18 @@ console.log(userName) // 함수에 의해 BBob으로 값이 바뀜
 // 외부 변수는 지역 변수가 없는 경우에만 사용할 수 있습니다.
 // 함수 내부에 외부 변수와 동일한 이름을 가진 변수가 선언되었다면, 내부 변수는 외부 변수를 가립니다.
 
-
 // 매개변수
 // 매개변수(parameter)를 이용하면 임의의 데이터를 함수 안에 전달할 수 있습니다.
 // 매개변수에 값을 전달하지 않으면 그 값은 undefined가 됩니다.
 // 매개변수에 값을 전달하지 않아도 그 값이 undefined가 되지 않게 하려면 '기본값(default value)'을 설정해주면 됩니다.
 // 예) text = 'no text give'
 function noTextFnc() {
-    console.log('text에 값이 할당되지 않았습니다')
-    return 'no text no text'
+  console.log('text에 값이 할당되지 않았습니다')
+  return 'no text no text'
 }
 
 function paraMsg(from, text = noTextFnc()) {
-    console.log(from + ": " + text)
+  console.log(from + ': ' + text)
 }
 
 paraMsg('Ann') // 두번째 인자를 전달하지 않아도 undefined가 할당될 뿐 에러가 발생하지는 않습니다.
@@ -91,28 +87,43 @@ paraMsg('Ann', "what's up?!")
 
 // 방법 1)
 function showshow(text) {
-    if( text === undefined ) {
-        text = '빈 문자열'
-    }
-    console.log(text, '빈 문자열 나타내기 방법 1')
+  if (text === undefined) {
+    text = '빈 문자열'
+  }
+  console.log(text, '빈 문자열 나타내기 방법 1')
 }
-showshow(); // 빈 문자열
+showshow() // 빈 문자열
 
 // 방법 2)
 function showshow2(text) {
-    text = text || '빈 문자열'
-    console.log(text, '빈 문자열 나타내기 방법 2')
+  text = text || '빈 문자열'
+  console.log(text, '빈 문자열 나타내기 방법 2')
 }
-showshow2();
+showshow2()
 
 // 방법 3) 모던 자바스크립트가 지원하는 null 병합 연산자 '??'를 사용하면 0처럼 falsy로 평가되는 값들을 일반 값처럼 처리할 수 있어 좋습니다.
 
 // 매개변수 'count'가 넘어오지 않으면 'unknown'을 출력해주는 함수
 function showshow3(count) {
-    console.log(count ?? 'unknown 방법3')
+  console.log(count ?? 'unknown 방법3')
 }
 
 showshow3(0) // 0
 showshow3('string') // string
 showshow3(null) // unknown
 showshow3() // unknown
+
+// 함수 선언문, 함수 표현식
+
+// 함수 선언문
+// 함수 선언문이 정의되기 전에도 호출할 수 있습니다.
+function welcome(a, b) {
+  // 실행시킬 내용
+  return a + b
+}
+
+// 함수 표현식
+// 함수 표현식은 코드의 실행 흐름이 해당 함수에 도달했을때 함수를 실행합니다.
+let sum = function (a, b) {
+  return a + b
+}
