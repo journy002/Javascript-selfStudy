@@ -59,3 +59,42 @@ let user4 = {
 user4.sayHello() // hihihi
 
 // 메서드와 this
+
+// 메서드는 객체에 저장된 정보에 접근할 수 있어야 제 역할을 할 수 있습니다. 모든 메서드가 그런 건 아니지만, 대부분의 메서드가 객체 프로퍼티의 값을 활용합니다.
+
+// user.sayHi()의 내부 코드에서 객체 user에 저장된 이름(name)을 이용해 인사말을 만드는 경우가 이런 경우에 속합니다.
+
+// 메서드 내부에서 this 키워드를 사용하면 객체에 접근할 수 있습니다.
+
+// 이때 '점 앞’의 this는 객체를 나타냅니다. 정확히는 메서드를 호출할 때 사용된 객체를 나타내죠.
+
+// 예시
+
+let homeUser = {
+  name: 'Ohhao',
+  age: 30,
+
+  sayHello() {
+    console.log('Hello~! ' + this.name, ', 메서드와 this')
+  },
+}
+
+homeUser.sayHello()
+
+let homeUser2 = {
+  name: 'Horangrang',
+  age: 30,
+
+  sayHi() {
+    console.log('Hello~! ' + homeUser2.name) // Error: Cannot read property of null (reading 'name) at Object.sayHi
+  },
+}
+
+let admin2 = homeUser2
+
+homeUser2 = null // null로 덮어씁니다.
+admin2.sayHi() // sayHi()가 엉뚱한 객체를 참고하면서 에러가 발생합니다.
+
+// console.log()가 homeUser2.name 대신 this.name을 인수로 받았다면 에러가 발생하지 않았을 겁니다.
+
+// 자유로운 this
