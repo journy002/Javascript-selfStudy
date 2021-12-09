@@ -23,4 +23,74 @@
 // 전역 변수에 객체가 저장되어있다고 가정해 봅시다.
 // 이 객체의 프로퍼티가 또 다른 객체를 참조하고 있다면, 프로퍼티가 참조하는 객체는 도달 가능한 값이 됩니다. 이 객체가 참조하는 다른 모든 것들도 도달 가능하다고 여겨집니다.
 
-// 바스크립트 엔진 내에선 가비지 컬렉터(garbage collector)가 끊임없이 동작합니다. 가비지 컬렉터는 모든 객체를 모니터링하고, 도달할 수 없는 객체는 삭제합니다.
+// 바스크립트 엔진 내에선 가비지 컬렉터(garbage collector)가 끊임없이 동작합니다. 가비지 컬렉터는 모든 객체를 모니터링하고, 도달할 수 없는 객체는 삭제합니다
+
+// 예시
+
+// user엔 객체 참조 값이 저장됩니다.
+let user = {
+  name: 'John',
+}
+
+// 전역 변수 "user"는 {name: "John"} (줄여서 John)이라는 객체를 참조합니다.
+// John의 프로퍼티 "name"은 원시값을 저장하고 있기 때문에 객체 안에 표현했습니다.
+
+user = null
+
+// user의 값을 다른 값으로 덮어쓰면 참조했던 값이 사라집니다.
+// 이제 John은 도달할 수 없는 상태가 되었습니다.
+// John에 접근할 방법도, John을 참조하는 것도 모두 사라졌습니다.
+// 가비지 컬렉터는 이제 John에 저장된 데이터를 삭제하고, John을 메모리에서 삭제합니다.
+
+console.log(user, '가비지 컬렉션 user')
+
+let user2 = {
+  name: 'HOHOa',
+}
+
+let admin = user2
+
+console.log(user2, 'user2')
+console.log(admin, 'admin')
+
+user2 = null
+
+console.log(user2, 'null값을 할당해준 user2')
+console.log(admin, 'admin')
+// 전역 변수 admin을 통하면 여전히 객체 John에 접근할 수 있기 때문에 John은 메모리에서 삭제되지 않습니다.
+// 이 상태에서 admin을 다른 값(null 등)으로 덮어쓰면 John은 메모리에서 삭제될 수 있습니다.
+
+let user3 = {
+  name: 'yayayaya',
+}
+
+let minmin = user3
+
+minmin.name = 'shdoshdo' // 참조 값을 바꿔 버리면 같은 참조 값을 가지고 있는 usre3 의 name 프로퍼티의 값도 바뀝니다.
+
+console.log(user3, 'user3') // name: shdoshdo
+console.log(minmin, 'minmin')
+
+// 연결된 객체
+
+function marry(man, woman) {
+  woman.husband = man
+  man.wife = woman
+
+  return {
+    father: man,
+    mother: woman,
+  }
+}
+
+let family = marry({ name: 'Jhon' }, { name: 'Ann' })
+console.log(family, 'original family')
+// 함수 marry(결혼하다)는 매개변수로 받은 두 객체를 서로 참조하게 하면서 '결혼’시키고, 두 객체를 포함하는 새로운 객체를 반환합니다.
+
+delete family.father
+//delete family.mother.husband
+console.log(family, 'after delete property')
+
+// 삭제한 두 개의 참조 중 하나만 지웠다면, 모든 객체가 여전히 도달 가능한 상태였을 겁니다.
+
+// 하지만 참조 두 개를 지우면 John으로 들어오는 참조(화살표)는 모두 사라져 John은 도달 가능한 상태에서 벗어납니다.
