@@ -93,7 +93,7 @@ let homeUser2 = {
 let admin2 = homeUser2
 
 homeUser2 = null // null로 덮어씁니다.
-admin2.sayHi() // sayHi()가 엉뚱한 객체를 참고하면서 에러가 발생합니다.
+// admin2.sayHi() // sayHi()가 엉뚱한 객체를 참고하면서 에러가 발생합니다.
 
 // console.log()가 homeUser2.name 대신 this.name을 인수로 받았다면 에러가 발생하지 않았을 겁니다.
 
@@ -101,3 +101,53 @@ admin2.sayHi() // sayHi()가 엉뚱한 객체를 참고하면서 에러가 발�
 
 // 자바스크립트의 this는 다른 프로그래밍 언어의 this와 동작 방식이 다릅니다.
 // 자바스크립트에선 모든 함수에 this를 사용할 수 있습니다.
+
+// this 값은 런타임에 결정됩니다.
+// 동일한 함수라도 다른 객체에서 호출했다면 'this'가 참조하는 값이 달라집니다.
+
+let adUser = { name: 'adwin' }
+let userAdmin = { name: 'userAdmin' }
+
+function sayHi() {
+  console.log(this.name, '자유로운 this')
+}
+
+adUser.f = sayHi
+userAdmin.f = sayHi
+
+adUser.f() // adwin
+userAdmin.f() // userAdmin
+
+// 객체 없이 호출하기: this == undefined
+// 객체가 없어도 함수를 호출할 수 있습니다.
+
+function sayHo() {
+  console.log(this, 'sayHo function')
+}
+sayHo() // undefined
+
+// 위와 같은 코드를 엄격 모드에서 실행하면, this엔 undefined가 할당 됩니다.
+// this.name으로 name에 접근하려고 하면 에러가 발생하죠
+// 엄격 모드가 아닐 때는 this가 전역 객체를 참조합니다.
+
+// this가 없는 화살표 함수
+
+// 화살표 함수는 일반 함수와는 달리 '고유한' this를 가지지 않습니다.
+// 화살표 함수에서 this를 참조하면, 화살표 함수가 아닌 '평범한' 외부 함수에서 this값을 가져옵니다.
+
+let user13 = {
+  firstName: '보라',
+  sayHi() {
+    let arrow = function () {
+      alert(this.firstName)
+    }
+    arrow()
+  },
+}
+
+user13.sayHi() // 보라
+
+// let arrow 변수에 함수를 저장시켜 sayHi 메소드 내부에서 arrow함수를 선언하면 undefined값이 나온다.
+// 즉 함수표현식에서 this는 외부에서 값을 가져오지 못한다.
+// 하지만 화살표 함수를 사용하여 let arrow = () => { console.log(this.firstName) } 을 만들어주고 sayHi 메소드 안에서 arrow메소드 실행문을 적어주면
+// 148번줄에서 '보라' 라는 결과값이 잘 나온다.
