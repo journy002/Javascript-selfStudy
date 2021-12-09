@@ -98,3 +98,6 @@ admin2.sayHi() // sayHi()가 엉뚱한 객체를 참고하면서 에러가 발�
 // console.log()가 homeUser2.name 대신 this.name을 인수로 받았다면 에러가 발생하지 않았을 겁니다.
 
 // 자유로운 this
+
+// 자바스크립트의 this는 다른 프로그래밍 언어의 this와 동작 방식이 다릅니다.
+// 자바스크립트에선 모든 함수에 this를 사용할 수 있습니다.
