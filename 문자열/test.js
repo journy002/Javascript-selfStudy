@@ -73,3 +73,109 @@ while (true) {
   pos = foundPos + 1 // 다음 위치를 기준으로 검색을 이어갑니다.
   console.log('다음 위치: ' + pos)
 }
+
+// 동일한 알고리즘을 사용해 코드만 짧게 줄이기
+
+let str5 = 'As sly as a fox, as strong as an ox'
+let target5 = 'as'
+
+let pos2 = -1
+// target을 이용해 찾은 후 다음 자리를 찾기 위해 +1을 해주되, indexOf()의 위치값은 0이 기본이 되어야 하기 때문이다.
+while ((pos2 = str5.indexOf(target, pos2 + 1)) != -1) {
+  console.log(`str5 위치: ${pos2}`)
+}
+
+// indexOf()를 조건문에서 사용할 때 주의할 점이 있습니다.
+// if() 조건문은 조건식에 0이 들어오면 false를 반환합니다.
+// Webkit은 맨 처음 발견되는 단어로서 0을 반환하기 때문에 조건문에서 false로 간주합니다.
+// substr이 -1과 같지 않으면 이라는 조건을 할당하여 0인 값 또한 true로 간주하여 값을 반환해 줍니다.
+let str77 = 'Webkit with id'
+if (str77.indexOf('Webkit') != -1) {
+  console.log('I found!!')
+}
+
+// includes, startsWith, endsWith
+
+// str.includes(substr, pos)는 str에 부분 문자열 substr이 있는지에 따라 true / false를 반환합니다.
+// 부분 문자열의 위치 정보는 필요하지 않고 포함 여부만 알고 싶을 때 적합한 메소드 입니다.
+console.log(str77.includes('with'), 'includes() 메소드')
+
+// 메서드 str.startsWith와 str.endsWith는 메서드 이름 그대로 문자열 str이 특정 문자열로 시작하는지(start with) 여부와 특정 문자열로 끝나는지(end with) 여부를 확인할 때 사용할 수 있습니다.
+console.log(str77.startsWith('Web'), 'startWith() 메소드')
+console.log(str77.endsWith('with'), 'endsWith() 메소드')
+
+// 부분 문자열 추출하기
+
+// str.slice(start, [, end])
+// 문자열의 start부터 end까지(end는 미포함)를 반환합니다.
+let slstr = 'stringify'
+console.log(slstr.slice(0, 3), 'slice') // str
+// 두번째 인수가 생략된 경우엔, 명시한 위치부터 문자열 끝까지 반환합니다.
+console.log(slstr.slice(2), '두번째 인수가 생략된 경우') // ringify
+
+// 문자열 비교하기
+
+// str.codePointAt(pos)
+// pos에 위치한 글자의 코드를 반환합니다.
+console.log('zo'.codePointAt(0), '소문자 z') // 122
+console.log('Z'.codePointAt(0), '대문자 Z') // 90
+
+// String.fromCodePoint(code)
+// 숫자 형식의 code에 대응하는 글자를 만들어줍니다.
+console.log(String.fromCodePoint(90), '숫자 형식의 코드에 대응하는 글자를 반환') // Z
+
+// 65 ~ 220 사이 글자 출력
+let str09 = ''
+for (let i = 65; i <= 220; i++) {
+  str09 += String.fromCodePoint(i)
+}
+console.log(str09, ' // 65 ~ 220사이 글자 출력')
+
+// 문자열 제대로 비교하기
+
+// 언어마다 문자 체계가 다르기 때문에 문자열을 '제대로' 비교하는 알고리즘을 만드는건 생각보다 어렵습니다.
+// 문자열을 비교하려면 일단 페이지에서 어떤 언어를 사용하고 있는지 브라우저가 알아야 합니다.
+
+// 다행히도 모던 브라우저 대부분이 국제화 관련 표준인 ECMA-402를 지원합니다(IE10은 아쉽게도 Intl.js 라이브러리를 사용해야 합니다).
+
+// ECMA-402엔 언어가 다를 때 적용할 수 있는 문자열 비교 규칙과 이를 준수하는 메서드가 정의되어있습니다.
+
+// str.localeCompare(str2)를 호출하면 ECMA-402에서 정의한 규칙에 따라 str이 str2보다 작은지, 같은지, 큰지를 나타내주는 정수가 반환됩니다.
+// str이 str2보다 작으면 음수를 반환합니다.
+// str이 str2보다 크면 양수를 반환합니다.
+// str과 str2이 같으면 0을 반환합니다.
+
+console.log('Österreich'.localeCompare('Zealand'), ' 문자열 제대로 비교하기') // -1
+
+// 첫 글자를 대문자로 변경하기
+
+function ucFirst(str) {
+  if (!str) {
+    alert('글자를 입력해주세요')
+    return str
+  }
+
+  return str[0].toUpperCase() + str.slice(1)
+}
+
+console.log(ucFirst('hobanya'), '첫글자 대문자로 변경하기')
+
+// 스팸 문자열 걸러내기
+
+function checkSpam(str) {
+  let lowerStr = str.toLowerCase()
+
+  return lowerStr.includes('viagra') || lowerStr.includes('xxx')
+}
+
+console.log(checkSpam('buy ViAgRa now'), 'check viagra spam')
+console.log(checkSpam('free xxxxx'), 'check free xxxxx')
+console.log(checkSpam('innocent rabbit'), 'check innocent rabbit')
+
+function truncate(str, maxlength) {
+  return str.length > maxlength ? str.slice(0, maxlength) + '...' : str
+}
+console.log(
+  truncate("What I'd like to tell on this topic is:", 20),
+  '글자수 줄이기',
+)
