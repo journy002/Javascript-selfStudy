@@ -57,3 +57,11 @@ let user2 = {
 
 // 실수로 인해 user에 값을 할당하지 않았다면 바로 알아낼 수 있도록 해야 합니다.
 // 그렇지 않으면 에러를 조기에 발견하지 못하고 디버깅이 어려워집니다.
+
+// 요약
+
+// 옵셔널 체이닝 문법 ?.은 세 가지 형태로 사용할 수 있습니다.
+
+// obj?.prop – obj가 존재하면 obj.prop을 반환하고, 그렇지 않으면 undefined를 반환함
+// obj?.[prop] – obj가 존재하면 obj[prop]을 반환하고, 그렇지 않으면 undefined를 반환함
+// obj?.method() – obj가 존재하면 obj.method()를 호출하고, 그렇지 않으면 undefined를 반환함

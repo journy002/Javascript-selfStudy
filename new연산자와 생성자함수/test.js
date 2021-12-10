@@ -83,3 +83,66 @@ function User2(name) {
 let bora = new User2('Bora')
 
 bora.sayHo()
+
+/////// 연습문제
+
+// 함수 두 개로 동일한 객체 만들기
+
+let obj = {}
+
+function A() {
+  return obj
+}
+function B() {
+  return obj
+}
+
+let a = new A()
+let b = new B()
+
+console.log(a == b)
+
+// 간단한 계산기 만들기
+
+// read() - prompt 함수를 이용해서 사용자로부터 값 두개를 받고, 이를 객체 프로퍼티에 저장합니다.
+// sum() - 프로퍼티에 저장된 값 두개를 더한 후 반환합니다.
+// mul() - 프로퍼티에 저장된 값 두개를 곱한 후 반환합니다.
+
+// function Calculator() {
+//   this.read = function () {
+//     this.a = +prompt('a?')
+//     this.b = +prompt('b?')
+//   }
+
+//   this.sum = function () {
+//     return this.a + this.b
+//   }
+
+//   this.mul = function () {
+//     return this.a * this.b
+//   }
+// }
+
+// let calculator = new Calculator()
+
+// calculator.read()
+
+// console.log(calculator.sum(), '합')
+// console.log(calculator.mul(), '곱')
+
+// 누산기 만들기
+
+// function Accumulator(startingValue) {
+//   this.value = startingValue
+
+//   this.read = function () {
+//     let a = +prompt('num')
+//     this.value += a
+//   }
+// }
+
+// let accumulator = new Accumulator(1)
+
+// accumulator.read()
+
+// console.log(accumulator.value, 'accumulator value')
