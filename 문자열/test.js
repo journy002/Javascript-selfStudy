@@ -179,3 +179,13 @@ console.log(
   truncate("What I'd like to tell on this topic is:", 20),
   '글자수 줄이기',
 )
+
+// 숫자만 추출하기
+
+// 문자 -> 숫자  fromCodePoint()
+
+function extractCurrencyValue(str) {
+  return +str.slice(1)
+}
+
+console.log(extractCurrencyValue('$120'), '숫자만 추출하기')
