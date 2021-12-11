@@ -103,3 +103,23 @@ switch (device) {
   default:
     console.log('what??')
 }
+
+// 입력받은 숫자의 부호 표시하기
+
+let promA = +prompt('first num')
+
+if (promA > 0) {
+  console.log(0, '입력받은 숫자 부호 표시')
+} else if (promA < 0) {
+  console.log(-1, '입력받은 숫자 부호 표시')
+} else if (promA == 0) {
+  console.log(0, '입력받은 숫자 부호 표시')
+}
+
+// if => ?로 교체하기
+
+let chanA = +prompt('chanA num?')
+let chanB = +prompt('chanB num')
+let result2
+
+console.log(chanA + chanB < 4 ? (result2 = '미만') : (result2 = '이상'))
