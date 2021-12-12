@@ -136,9 +136,48 @@ alert(alert(1) && alert(2)) // 1 , undefined
 // alert(!)의 평가 결과는 undefined이기 때문입니다.
 // && 연산자는 falsy를 만나면 그 값을 출력하고 즉시 연산을 멈춥니다.
 
+// OR AND OR 연산자로 구성된 표현식
 alert(null || (2 && 3) || 4) // 3
 
+// 사이 범위 확인하기
 let age = 15
 if (age >= 14 && age <= 90) {
   console.log('14 ~ 90세 사이에 포함됩니다')
+}
+
+// 바깥 범위 확인하기
+
+let age2 = 8
+if (age2 < 14 || age2 > 90) {
+  console.log('14세 ~ 90세 이하에 속하지 않는 나이')
+}
+let age3 = 7
+if (!(age3 >= 14 && age3 <= 90)) {
+  console.log('not연산자를 이용한 14~90세 이하에 속하지 않는 나이')
+}
+
+// if에 관한 고찰
+// 아래 표현식에서 어떤 alert가 실행될까요?
+
+if (-1 || 0) alert('first') // -1 이므로 truthy 얼럴트 실행
+if (-1 && 0) alert('second') // 0 이므로 falsy 얼럴트 실행 no
+if (null || (-1 && 1)) alert('third') // -1 이므로 truthy 얼럴트 실행
+
+// 로그인 구현하기
+
+let user = 'Admin'
+
+if (user === 'Admin') {
+  let pw = prompt('비밀번호를 입력하세요')
+  if (pw === 'TheMaster') {
+    alert('로그인 성공!')
+  } else if (pw !== 'TheMaster') {
+    alert('인증에 실패하였습니다')
+  } else if (pw === '' || pw == null) {
+    alert('취소되었습니다.')
+  }
+} else if (user == '' || user == null) {
+  alert('취소되었습니다.')
+} else {
+  alert('인증되지 않은 사용자 입니다.')
 }
