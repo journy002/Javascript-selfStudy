@@ -117,3 +117,28 @@ console.log(!0) //true
 
 console.log(!!'non-empty-string', '!! 연산자 사용하기') // true
 console.log(!!null, '!! 연산자 사용하기') //false
+
+alert(alert(1) || 2 || alert(3))
+
+// alert 메서드는 값을 반환하지 않습니다. 즉, undefined를 반환하죠.
+
+// 첫 번째 OR || 은 왼쪽 피연산자인 alert(1)를 평가합니다. 이때 첫 번째 얼럿 창에 1이 출력되죠.
+// alert메서드는 undefined를 반환하기 때문에, OR 연산자는 다음 피연산자를 평가하게 됩니다. truthy를 찾기 위해 말이죠.
+// 두 번째 피연산자(오른쪽 피연산자)인 2는 truthy이기 때문에 실행이 멈추고 2가 반환됩니다. 반환된 값 2는 제일 바깥 alert의 피연산자가 되어 두 번째 얼럿창에 출력됩니다.
+// 평가가 alert(3)까지 진행되지 않기 때문에 3은 출력되지 않습니다.
+
+alert(1 && null && 2) // null
+
+alert(alert(1) && alert(2)) // 1 , undefined
+// alert를 호출하면 undefined가 반환됩니다.
+// alert는 단순히 얼럿 창에 메세지만 띄워주고, 의미 있는 값을 반환해 주지 않습니다.
+// &&는 왼쪽 피연산자 alert(1)을 평가하고 (이때 1이 얼럿창에 출력됩니다) 평가를 즉시 멈춥니다.
+// alert(!)의 평가 결과는 undefined이기 때문입니다.
+// && 연산자는 falsy를 만나면 그 값을 출력하고 즉시 연산을 멈춥니다.
+
+alert(null || (2 && 3) || 4) // 3
+
+let age = 15
+if (age >= 14 && age <= 90) {
+  console.log('14 ~ 90세 사이에 포함됩니다')
+}
