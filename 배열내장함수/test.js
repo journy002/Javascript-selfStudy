@@ -9,13 +9,13 @@
 // splice() : 배열 객체의 지정한 데이터를 삭제하고 새로운 데이터를 삽입 합니다.
 // concat() : 2개의 배열객체를 하나로 합친 배열 객체를 반환합니다.
 
+console.log('-----------forEach-------------')
+// forEach()는 주어진 함수를 배열 요소에 각각에 대해 실행할 수 있게 해줍니다.
 const superheroes = ['아이언맨', '캡틴 아메리카', '토르', '닥터 스트레인지']
 
 superheroes.forEach((hero) => {
   console.log(hero)
 })
-
-console.log('-----------forEach-------------')
 
 const array = [1, 2, 3, 4, 5, 6, 7]
 
@@ -28,21 +28,27 @@ array.forEach((n) => {
 })
 
 console.log(squared, 'forEach')
-
-console.log('-------------map--------------')
-
-const array2 = [1, 2, 3, 4, 5, 6, 7, 8]
-
-const squared2 = (n) => n * n
-const squared3 = array2.map(squared2)
-console.log(squared3)
+;['bilbo', 'gandalf', 'nazgul'].forEach((item, index, array) => {
+  console.log(`${item} is at index ${index} in ${array}`)
+})
 
 console.log('------------indexOf--------------')
 
 const index = superheroes.indexOf('닥터 스트레인지')
 console.log(index, 'index')
 
+console.log('------------lastindexOf--------------')
+
+const array3 = ['a', '2', 'c']
+let last_array3 = array3.lastIndexOf('c')
+console.log(last_array3, ' // lastindexOf')
+
 console.log('----------findIndex--------------')
+// let result = arr.find(function(item, index, array) {
+//   // true가 반환되면 반복이 멈추고 해당 요소를 반환합니다.
+//   // 조건에 해당하는 요소가 없으면 undefined를 반환합니다.
+//      index, array 인자는 잘 사용되지 않습니다.
+// })
 // 배열 안에 있는 값이 객체이거나, 배열이면 findIndex를 이용해서 몇번째 원소인지 찾을 수 있다.
 const todos = [
   {
@@ -71,22 +77,57 @@ const todoResult = todos.findIndex((todo) => todo.done === false)
 console.log(todoResult, 'todos done')
 
 console.log('---------------find -------------')
+
 const todoFind = todos.find((todo) => todo.id === 3)
 console.log(todoFind, 'todoFind')
 
-console.log('--------------splice--------------')
+let users = [
+  { id: 1, name: 'John' },
+  { id: 2, name: 'Keya' },
+  { id: 3, name: 'Hona' },
+]
 
+let user = users.find((item) => item.name === 'John')
+let user2 = users.find((item) => item.id === 2)
+console.log(user, ' // find user!')
+console.log(user2, ' // find user2!')
+
+console.log('------- filter ---------')
+// find 메서드는 함수의 반환 값을 true로 만드는 단 하나의 요소를 찾습니다.
+// 조건을 충족하는 요소가 여러개라면 arr.filter(fn)를 사용하면 됩니다.
+
+// let result = 변수이름.filter(function(item, index, array) {
+//   // 조건을 충족하는 요소는 result에 순차적으로 더해집니다.
+//   // 조건을 충족하는 요소가 하나도 없으면 빈 배열이 반환됩니다.
+// })
+
+let someUsers = users.filter((item) => item.id < 3)
+console.log(someUsers, ' // check filter function')
+
+console.log('--------------splice--------------')
+// splice() 첫 번째 매개변수는 조작을 가할 첫 번째 요소를 가리키는 인덱스 입니다.
+// 두 번째 매개변수는 제거하고자 하는 요소의 개수를 나타냅니다.
+// 세번째는 배열에 추가할 요소를 나타냅니다.
 const numbers = [10, 20, 30, 40]
 const index2 = numbers.indexOf(30)
 numbers.splice(index2, 1)
 console.log(numbers, 'splice')
 
+const numbers2 = ['html5', 'css3', 'javascript(Es6)']
+numbers2.splice(0, 2, 'React', 'React-redux')
+console.log(numbers2, ' // splice ')
+console.log(numbers2[0], ' // splice number2[0]')
+
+let numbers3 = ['i', 'study', 'javascript']
+numbers3.splice(2, 0, 'complex', 'language')
+console.log(numbers3, ' // splice number3')
+
 console.log('------slice--------')
 // 기존의 배열은 건드리지 않은채 첫번재 인자부터 두번째 인자 앞까지의 데이터를 잘라 새로운 배열 객체를 반환합니다.
 const numberss = [10, 20, 30, 40]
 const sliced = numbers.slice(0, 2)
+console.log(numberss, ' after slice ')
 console.log(sliced, 'slice')
-console.log(numberss, 'sliced numbers')
 
 console.log('------------shift, pop -----------')
 // shift() 배열의 첫번째 항목,원소를 추출
@@ -114,6 +155,16 @@ const arr2 = [5, 6, 7]
 const concated = arr1.concat(arr2)
 console.log(concated, 'concated')
 
+let arr5 = [1, 2]
+let arrayLike = {
+  0: 'something',
+  lenght: 1,
+  // [Symbol.isConcatSpreadable]: true, [Symbol.isConcatSpreadable]이 있으면 concat은 이 객체를 배열처럼 취급합니다. 따라서 객체 전체가 아닌 객체 프로퍼티의 값이 더해집니다.
+  habbit: 'what?',
+}
+
+alert(arr5.concat(arrayLike), ' // arr5.concat')
+
 console.log('------reduce ---------')
 
 const reduceNumber = [1, 2, 3, 4, 5]
@@ -123,6 +174,70 @@ let reduceSum = reduceNumber.reduce((accumulated, current) => {
 }, 0)
 
 console.log(reduceSum)
+
+console.log('------------- map --------------')
+// map은 배열 요소 전체를 대상으로 함수를 호출하고, 함수 호출 결과를 배열로 반환해줍니다.
+
+const array2 = [1, 2, 3, 4, 5, 6, 7, 8]
+
+const squared2 = (n) => n * n
+const squared3 = array2.map(squared2)
+console.log(squared3)
+
+let lengths = ['Bilbo', 'Gandalf', 'Nazgul'].map((item) => item.length)
+console.log(lengths, ' // check map function')
+
+console.log('------------- sort --------------')
+// sort()는 배열의 요소를 정렬해줍니다. 배열 자체가 변경됩니다.
+// 메서드를 호출하면 재정렬 된 배열이 반환되는데, 이미 배열 자체가 수정되었기 때문에 반환 값은 잘 사용되지 않는 편 입니다.
+let arr6 = [1, 2, 15]
+arr6.sort()
+console.log(arr6, ' // check sort function')
+
+// 재정렬 후 배열 요소가 1, 15, 2가 되었습니다. 기대하던 결과(1, 2, 15)와는 다릅니다.
+// 요소는 문자열로 취급되어 재 정렬되기 때문입니다.
+// 모든 요소는 문자형으로 변환된 이후에 재 정렬됩니다. 앞서 배웠듯이 문자열 비교는 사전편집 순으로 진행되기 때문에 2는 15보다 큰 값으로 취급됩니다.("2" > "15")
+
+// 기본 정렬 기준 대신 새로운 정렬 기준을 만들려면 arr6.sort()에 새로운 함수를 넘겨줘야 합니다.
+// 새로운 함수)
+// function compare(a,b) {
+//   if(a > b) return 1 // 첫번째 값이 두번째 값보다 큰 경우
+//   if(a === b) return 0 // 두 값이 같은 경우
+//   if(a < b) return -1 // 첫번째 값이 두번째 값보다 작은 경우
+// }
+
+function compareNumeric(a, b) {
+  if (a > b) return 1
+  if (a === b) return 0
+  if (a < b) return -1
+}
+
+let arr7 = [1, 2, 15]
+
+arr7.sort(compareNumeric)
+console.log(arr7, ' // check compareNumeric func')
+
+// sort()에서 숫자 정렬
+// 오름차 순으로 정렬: arr.sort((a, b) => a - b);
+// 내림차 순으로 정렬: arr.sort((a, b) => b - a);
+
+let arr8 = [1, 15, 3, 2, 26, 7]
+console.log(
+  arr8.sort((a, b) => a - b),
+  ' // sort 오름차 순',
+)
+console.log(
+  arr8.sort((a, b) => b - a),
+  ' // sort 내림차 순',
+)
+
+// 문자열 배열을 정렬할땐 localeCompare를 사용합니다.
+let countries = ['Österreich', 'Andorra', 'Vietnam']
+console.log(countries.sort((a, b) => a.localeCompare(b)))
+
+console.log('------------- reverse --------------')
+let result_reverse = [1, 2, 3, 4, 5]
+console.log(result_reverse.reverse(), ' // check reverse function')
 
 // 배열은 복사가 될까요?
 // 배열은 객체이기 때문에 모두 같은 배열을 참조합니다.
