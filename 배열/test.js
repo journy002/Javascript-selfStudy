@@ -207,4 +207,19 @@ console.log(arr16, 'arr16 length ') // 삭제된 기존 요소들이 복구되�
 
 // 이런 특징을 이용하면 arr.length = 0 을 사용해 아주 간단하게 배열을 비울 수 있습니다.
 
-// new Array()
+// 다차원 배열
+// 배열 역시 배열의 요소가 될 수 있습니다.
+// 다차원 배열은 행렬을 저장하는 용도로 쓰입니다.
+
+let matrix = [
+  [1, 2, 3],
+  [4, 5, 6],
+  [7, 8, 9],
+]
+console.log(matrix[1][1]) // 5
+
+// toString
+// 배열엔 toString 메서드가 구현되어 있어 이를 호출하면 요소를 쉼표로 구분한 문자열이 반환됩니다.
+let arr17 = [1, 2, 3]
+console.log(arr17, 'arr17') // 1,2,3
+console.log(String(arr17) === '1,2,3', 'arr17 toString')
