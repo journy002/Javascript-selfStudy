@@ -153,6 +153,10 @@ alert(fruits3) // 바나나,배 - 요소가 두 개가 되었습니다.
 // arr[0]과 arr[1000]만 추가하고 그사이에 아무런 요소도 없는 경우
 // arr[1000], arr[999]같이 요소를 역순으로 채우는 경우
 
+// 배열은 순서가 있는 자료를 저장하는 용도로 만들어진 특수한 자료구조입니다. 배열 내장 메서드들은 이런 용도에 맞게 만들어졌죠.
+// 자바스크립트 엔진은 이런 특성을 고려하여 배열을 신중하게 조정하고, 처리하므로 배열을 사용할 땐 이런 목적에 맞게 사용해 주시기 바랍니다.
+// 임의의 키를 사용해야 한다면 배열보단 일반 객체 {}가 적합한 자료구조일 확률이 높습니다.
+
 // 성능
 
 // push, pop은 빠르지만 shift, unshift는 느립니다.
@@ -177,3 +181,30 @@ alert(fruits3) // 바나나,배 - 요소가 두 개가 되었습니다.
 let langu2 = ['c', 'b', 'a', 'x', 'd']
 langu2.sort()
 console.log(langu2, 'sort func')
+
+// for문
+// for문은 배열을 순회할 때 쓰는 가장 오래된 방법입니다.
+
+let arr10 = ['사과', '딸기', '포도']
+for (let i = 0; i < arr10.length; i++) {
+  console.log(arr10[i])
+}
+
+// for ..of
+// for ..of를 사용하면 현재 요소의 인덱스는 얻을 수 없고 값만 얻을 수 있습니다.
+let arr11 = ['오렌지', '자몽', '귤']
+for (let fruit of arr11) {
+  console.log(fruit, 'for of')
+}
+
+// length 프로퍼티
+let arr16 = ['1', '2', '3', '4', '5']
+arr16.length = 2 // 요소 두개만 남기고 잘라보기
+console.log(arr16, 'arr16 length') // 1, 2
+
+arr16.length = 5
+console.log(arr16, 'arr16 length ') // 삭제된 기존 요소들이 복구되지 않습니다.
+
+// 이런 특징을 이용하면 arr.length = 0 을 사용해 아주 간단하게 배열을 비울 수 있습니다.
+
+// new Array()
