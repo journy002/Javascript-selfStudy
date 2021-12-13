@@ -117,10 +117,67 @@ console.log(concated, 'concated')
 console.log('------reduce ---------')
 
 const reduceNumber = [1, 2, 3, 4, 5]
-
 let reduceSum = reduceNumber.reduce((accumulated, current) => {
   console.log({ accumulated, current })
   return accumulated + current
 }, 0)
 
 console.log(reduceSum)
+
+// 배열은 복사가 될까요?
+// 배열은 객체이기 때문에 모두 같은 배열을 참조합니다.
+let ffruits = ['사과', '복숭아', '배']
+let shoppingCart = ffruits
+shoppingCart.push('바나나')
+console.log(shoppingCart, ' shoppingCart')
+
+// 배열과 관련된 연산
+
+// 요소 “Jazz”, "Blues"가 있는 styles 배열을 생성합니다.
+// "Rock-n-Roll"을 배열 끝에 추가합니다.
+// 배열 정 중앙에 있는 요소를 "Classics"로 바꿉니다. 가운데 요소를 찾는 코드는 요소가 홀수 개인 배열에서도 잘 작동해야 합니다.
+// 배열의 첫 번째 요소를 꺼내서 출력합니다.
+// "Rap"과 "Reggae"를 배열의 앞에 추가합니다.
+
+let styles = ['Jazz', 'Blues']
+styles.push('Rock-n-Roll')
+// styles[1] = 'Classics'
+styles[Math.floor((styles.length - 1) / 2)] = 'Classics'
+console.log(styles.shift())
+styles.unshift('Rap', 'Reggae')
+console.log(styles)
+
+// 배열 컨텍스트에서 함수 호출하기
+let arr3 = ['a', 'b']
+arr3.push(function () {
+  console.log(this, 'this')
+})
+arr3[2]() // ['a', 'b', f]
+
+// arr3[2]()를 호출하는 것은 obj가 arr이고, method는 2인 메소드 ojb[method]()를 호출하는 것과 문법적으로 동일합니다.
+// 즉, arr3[2]에 있는 함수가 객체 메소드처럼 호출되는 것이죠.
+// 따라서 arr3[2]는 arr3을 참조하는 this를 받고, 배열을 출력합니다.
+
+// 입력한 숫자의 합 구하기
+
+function sumInput() {
+  let number = []
+
+  while (true) {
+    let value = prompt('숫자를 입력하세요', 0)
+
+    if (value === '' || value === null) break
+
+    number.push(+value)
+  }
+
+  let sum = 0
+
+  for (let key of number) {
+    sum += key
+  }
+
+  return sum
+}
+
+console.log(sumInput(), '입력한 숫자의 합 구하기')
