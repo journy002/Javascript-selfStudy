@@ -239,6 +239,99 @@ console.log('------------- reverse --------------')
 let result_reverse = [1, 2, 3, 4, 5]
 console.log(result_reverse.reverse(), ' // check reverse function')
 
+console.log('------------- split, join --------------')
+// 메세지 전송 애플리케이션을 만들고 있다 가정했을때 수진자가 여러명일 경우, 발신자는 쉼표로 각 수진자를 구분할 겁니다.
+// John, Pete, Mary 같이 말이죠. 긴 문자열 형태의 수신자 리스트를 배열 형태로 전환해 처리하고 싶을때 split, join을 사용하면 좋습니다.
+
+// split(delim)을 이용하면 원하는 것을 정확히 할 수 있습니다.
+// 이 메소드는 구분자(delimiter) delim을 기준으로 문자열을 쪼개줍니다.
+// 아래 예시에선 쉼표와 공백을 합친 문자열이 구분자로 사용되고 있습니다.
+let names = 'Bilbo, Gandalf, Nazgul'
+let arr9 = names.split(', ')
+for (let name of arr9) {
+  console.log(`${name}에게 보내는 메세지`)
+}
+
+console.log('------------- reduce, reduceRight --------------')
+// forEach, for, for ..of를 사용하면 배열 내 요소를 대상으로 반복 작업을 할 수 있습니다.
+// 각 요소를 돌면서 반복 작업을 수행하고, 작업 결과물을 새로운 배열 형태로 엳으려면 map을 사용하면 되죠.
+// reduce와 reduceRight는 배열을 기반으로 값 하나를 도출할 때 사용됩니다.
+
+// 문법:
+// let value = arr.reduce(function(accumulator, item, index, array) {
+//   // ...
+// },[initial])
+
+// accumulator - 이전 함수 호출의 결과. initial은 함수 최초 호출시 사용되는 초기값을 나타탬
+// item - 현재 배열 요소
+// index - 요소의 위치
+// array - 배열
+
+let arr11 = [1, 2, 3, 4, 5]
+let result_reduce = arr11.reduce((sum, current) => sum + current, 0)
+console.log(result_reduce, ' // check reduce function')
+
+console.log('------------- Array.isArray --------------')
+// Array.isArray로 배열 여부 알아내기
+
+// 자바스크립트에서 배열은 독립된 자료형으로 취급하지 않고 객체형에 속합니다.
+// 따라서 typeof로는 일반 객체와 배열을 구분할 수가 없습니다.
+// 이때, Array.isArray(value)를 사용하면 매우 유용합니다.
+// value가 배열이라면 true, 배열이 아니라면 false 반환해줍니다.
+let arr12 = [1, 2, 3]
+console.log(Array.isArray(arr12)) // true
+console.log(Array.isArray({}), ' // check isArray({})') // flase
+console.log(Array.isArray([]), ' // check isArray([])') // true
+
+// 문자열을 글자 단위로 분리하기
+// split(s)의 s를 빈 문자열로 지정하면 문자열을 글자 단위로 분리할 수 있습니다.
+let str = 'test'
+console.log(str.split(''), ' // split() 빈문자열 test')
+
+// join()
+// arr.join(glue)는 split과 반대 역할을 하는 메소드입니다.
+// 인수 glue를 접착제처럼 사용해 배열 요소를 모두 합친 후 하나의 문자열을 만들어줍니다.
+
+let arr10 = ['Bilbo', 'Gandalf', 'Nazgul']
+let str3 = arr10.join(';')
+console.log(str3, 'joinnnnnn')
+
+console.log('------------- 배열 메서드와 thisArg --------------')
+
+// 함수를 호출하는 대부분의 배열 메서드(find, filter, map 등. sort는 제외)는 thisArg라는 매개변수를 옵션으로 받을 수 있습니다.
+// thisArg는 아래와 같이 활용할 수 있습니다.
+
+// arr.find(func, thisArg);
+// arr.filter(func, thisArg);
+// arr.map(func, thisArg);
+// ...
+// thisArg는 선택적으로 사용할 수 있는 마지막 인수입니다.
+// thisArg는 func의 this가 됩니다.
+
+let army = {
+  minAge: 18,
+  maxAge: 27,
+  canJoin(user) {
+    return user.age >= this.minAge && user.age < this.maxAge
+  },
+}
+
+let users3 = [{ age: 16 }, { age: 20 }, { age: 23 }, { age: 30 }]
+
+// army.canJoin 호출 시 참을 반환해주는 user를 찾음
+let soldiers = users3.filter(army.canJoin, army)
+console.log(soldiers, ' // check thisArg soldiers')
+console.log(soldiers.length, ' // check thisArg soldiers.length')
+console.log(soldiers[0].age, ' // check thisArg soldiers[0].age')
+console.log(soldiers[1].age, ' // check thisArg soldiers[1].age')
+
+// thisArgs에 army를 지정하지 않고 단순히 users.
+// filter(army.canJoin)를 사용했다면 army.canJoin은 단독 함수처럼 취급되고,
+// 함수 본문 내 this는 undefined가 되어 에러가 발생했을 겁니다.
+
+// users.filter(user => army.canJoin(user))를 사용하면 users.filter(army.canJoin, army)를 대체할 수 있긴 한데
+// thisArg를 사용하는 방식이 좀 더 이해하기 쉬우므로 더 자주 사용됩니다.
+
 // 배열은 복사가 될까요?
 // 배열은 객체이기 때문에 모두 같은 배열을 참조합니다.
 let ffruits = ['사과', '복숭아', '배']
