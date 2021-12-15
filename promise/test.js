@@ -119,3 +119,15 @@ let promise6 = new Promise((resolve, reject) => {
     })
     .finally(() => console.log('프로미스6가 준비되었습니다.'))
     .then(result => console.log(result))
+
+// 프로미스로 지연 만들기
+
+function delay(ms) {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => resolve('delay func 안에 resolve'), ms)
+    })
+}
+
+delay(3000).then(
+    result => console.log(result, 'yyy')
+)
