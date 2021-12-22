@@ -27,8 +27,8 @@ array.forEach((n) => {
   squared.push(n * n)
 })
 
-console.log(squared, 'forEach')
-;['bilbo', 'gandalf', 'nazgul'].forEach((item, index, array) => {
+console.log(squared, 'forEach');
+['bilbo', 'gandalf', 'nazgul'].forEach((item, index, array) => {
   console.log(`${item} is at index ${index} in ${array}`)
 })
 
@@ -50,8 +50,7 @@ console.log('----------findIndex--------------')
 //      index, array 인자는 잘 사용되지 않습니다.
 // })
 // 배열 안에 있는 값이 객체이거나, 배열이면 findIndex를 이용해서 몇번째 원소인지 찾을 수 있다.
-const todos = [
-  {
+const todos = [{
     id: 1,
     text: '자바스크립트 입문',
     done: true,
@@ -81,10 +80,18 @@ console.log('---------------find -------------')
 const todoFind = todos.find((todo) => todo.id === 3)
 console.log(todoFind, 'todoFind')
 
-let users = [
-  { id: 1, name: 'John' },
-  { id: 2, name: 'Keya' },
-  { id: 3, name: 'Hona' },
+let users = [{
+    id: 1,
+    name: 'John'
+  },
+  {
+    id: 2,
+    name: 'Keya'
+  },
+  {
+    id: 3,
+    name: 'Hona'
+  },
 ]
 
 let user = users.find((item) => item.name === 'John')
@@ -113,6 +120,7 @@ const index2 = numbers.indexOf(30)
 numbers.splice(index2, 1)
 console.log(numbers, 'splice')
 
+
 const numbers2 = ['html5', 'css3', 'javascript(Es6)']
 numbers2.splice(0, 2, 'React', 'React-redux')
 console.log(numbers2, ' // splice ')
@@ -126,8 +134,8 @@ console.log('------slice--------')
 // 기존의 배열은 건드리지 않은채 첫번재 인자부터 두번째 인자 앞까지의 데이터를 잘라 새로운 배열 객체를 반환합니다.
 const numberss = [10, 20, 30, 40]
 const sliced = numbers.slice(0, 2)
-console.log(numberss, ' after slice ')
-console.log(sliced, 'slice')
+console.log(numberss, ' after slice 기존 배열을 건드리지 않습니다.')
+console.log(sliced, 'slice 기존 배열을 건드리지 않은채 새로운 배열을 반환합니다.')
 
 console.log('------------shift, pop -----------')
 // shift() 배열의 첫번째 항목,원소를 추출
@@ -169,7 +177,10 @@ console.log('------reduce ---------')
 
 const reduceNumber = [1, 2, 3, 4, 5]
 let reduceSum = reduceNumber.reduce((accumulated, current) => {
-  console.log({ accumulated, current })
+  console.log({
+    accumulated,
+    current
+  })
   return accumulated + current
 }, 0)
 
@@ -316,7 +327,15 @@ let army = {
   },
 }
 
-let users3 = [{ age: 16 }, { age: 20 }, { age: 23 }, { age: 30 }]
+let users3 = [{
+  age: 16
+}, {
+  age: 20
+}, {
+  age: 23
+}, {
+  age: 30
+}]
 
 // army.canJoin 호출 시 참을 반환해주는 user를 찾음
 let soldiers = users3.filter(army.canJoin, army)
